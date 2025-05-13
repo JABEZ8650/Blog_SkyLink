@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Request } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Request, Req } from '@nestjs/common';
 import { PostService } from './post.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
@@ -19,9 +19,20 @@ export class PostController {
     return this.postService.findAll();
   }
 
+  @Get('/myposts')
+  myPosts(@Req() req) {
+    const id = req.user.id
+    return this.postService.findByAuthor(+id);
+  }
+
   @Get('/:id')
   findOne(@Param('id') id: string) {
     return this.postService.findOne(+id);
+  }
+
+  @Get('/author/:id')
+  findByAuthor(@Param('id') id: string) {
+    return this.postService.findByAuthor(+id);
   }
 
   @Patch(':id')

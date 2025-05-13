@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { UserDto } from './dto/user.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { User } from 'src/models/user.model';
@@ -12,13 +12,17 @@ export class UserService {
   ){}
 
   findAll() {
-    return this.userModel.findAll();
+    return this.userModel.findAll({
+    attributes: { exclude: ['password'] },
+  });
   }
 
   async findOne(id: number) {
-    const user = await this.userModel.findByPk(id)
+    const user = await this.userModel.findByPk(id , {
+    attributes: { exclude: ['password'] },
+  })
     if (!user) {
-      return "No user found";
+      throw new BadRequestException("No user found")
     }
     return user;
   }

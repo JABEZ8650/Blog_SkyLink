@@ -10,7 +10,7 @@ import { JwtModule } from '@nestjs/jwt';
     SequelizeModule.forFeature([User]),
     JwtModule.register({
       global: true,
-      secret: process.env.JWT_SECRET,
+      secret: "7124",
       signOptions: { expiresIn: '7d' },
     })
   ],

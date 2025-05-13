@@ -41,6 +41,14 @@ export class PostService {
     return post
   }
 
+  async findByAuthor(id: number) {
+    const post = await this.postModel.findAll({where:{authorId : id}});
+    if (!post) {
+     throw new BadRequestException("Post Not Found")
+    }
+    return post
+  }
+
   async update(id: number, update: UpdatePostDto, userId:number) {
     const post = await this.postModel.findByPk(id)
     if (post && post.authorId == userId) {
