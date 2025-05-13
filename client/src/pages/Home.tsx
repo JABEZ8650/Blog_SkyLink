@@ -1,15 +1,15 @@
 // src/pages/HomePage.tsx
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { PlusCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import axiosInstance from "@/api/axiosInstance";
 
 interface Post {
-  id: number;
+  postId: number;
   title: string;
   author: string;
+  content: string;
   date: string;
   summary: string;
 }
@@ -25,7 +25,7 @@ export default function Home() {
         let res = await axiosInstance.get('/post/')
         setPosts(res.data)
       } catch (error) {
-        console.log("Failed to load profile." , err);
+        console.log("Failed to load profile." , error);
       }
         
     }
@@ -37,7 +37,7 @@ export default function Home() {
   // Shuffle and organize posts
   const shuffle = (arr: Post[]) => [...arr].sort(() => 0.5 - Math.random());
   const randomIndex = Math.floor(Math.random() * posts.length);
-  const featuredPost = posts[randomIndex];
+  const featuredPost : any = posts[randomIndex];
   const trendingPosts = shuffle(posts).slice(1, 4);
   const otherPosts = shuffle(posts).slice(2);
 
@@ -114,7 +114,7 @@ export default function Home() {
       {trendingPosts.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           
-          {trendingPosts.map((post) => (
+          {trendingPosts.map((post : Post) => (
             <motion.div
               key={post.postId}
               initial={{ opacity: 0, y: 20 }}

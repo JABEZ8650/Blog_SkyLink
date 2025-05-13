@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Home, PencilLine, User, LogOut } from "lucide-react";
 import { removeToken } from "@/utils/auth";

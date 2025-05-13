@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,7 +6,7 @@ import { motion } from "framer-motion";
 import axiosInstance from "@/api/axiosInstance";
 
 interface Post {
-  id: string;
+  postId: string;
   title: string;
   excerpt: string;
 }
@@ -43,8 +42,8 @@ const ProfilePage = () => {
         console.log(posts.data)
         setUser(res.data)
         setPosts(posts.data)
-      } catch (err) {
-        setError("Failed to load profile." , err);
+      } catch (err: any) {
+        setError(`Failed to load profile. , ${err}`);
       } finally {
         setLoading(false);
       }
@@ -91,9 +90,9 @@ const ProfilePage = () => {
               <h3 className="text-xl font-bold text-white mb-6">Posts</h3>
               {Array.isArray(posts) && posts.length > 0 ? (
                 <div className="space-y-4">
-                  {posts.map((post) => (
+                  {posts.map((post :Post) => (
                     <div
-                      key={post.id}
+                      key={post.postId}
                       className="bg-white/10 p-6 rounded-xl border border-white/20 shadow-md hover:bg-white/20 transition-all"
                     >
                       <h4 className="text-xl text-white font-semibold">{post.title}</h4>

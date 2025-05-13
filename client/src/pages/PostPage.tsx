@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import axiosInstance from "@/api/axiosInstance";
@@ -22,7 +21,7 @@ export default function PostPage() {
 
   const { id } = useParams<{ id: string }>();
   const [post, setPost] = useState<Post | null>(null);
-  const [authorData, setAuthorData] = useState({});
+  const [authorData, setAuthorData] = useState<any>({});
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Sidebar from "./Sidebar";
+import Sidebar from "./SideBar";
 import Footer from "./Footer";
 
 interface LayoutProps {

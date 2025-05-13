@@ -1,5 +1,5 @@
 // src/pages/SignupPage.jsx
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -13,13 +13,11 @@ export default function SignupPage() {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [loading, setLoading] = useState(false)
 
     const { signup } =  useAuth();
 
-    const handleSignup = async (e) => {
+    const handleSignup = async (e : any) => {
         e.preventDefault();
-        setLoading(true);
 
         try {
           const success = await signup(name ,email, password); // your custom login function
@@ -27,12 +25,9 @@ export default function SignupPage() {
             navigate('/'); // navigate only on success
           }
         } 
-        catch (error) {
+        catch (error :any ) {
           console.error(error);
           alert(error.response?.data?.message || "SignUp error occurred");
-        } 
-        finally {
-          setLoading(false);
         }
     };
 

@@ -1,5 +1,5 @@
 // src/pages/LoginPage.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,7 @@ export default function LoginPage() {
 
     const { login } =  useAuth();
 
-    const handleLogin = async (e) => {
+    const handleLogin = async (e : any) => {
        e.preventDefault();
         setLoading(true);
 
@@ -26,7 +26,7 @@ export default function LoginPage() {
             navigate('/'); // navigate only on success
           }
         } 
-        catch (error) {
+        catch (error :any) {
           console.error(error);
           alert(error.response?.data?.message || "Login error occurred");
         } 
