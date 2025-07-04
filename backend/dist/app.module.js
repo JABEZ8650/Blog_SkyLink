@@ -26,8 +26,11 @@ exports.AppModule = AppModule = __decorate([
             }),
             sequelize_1.SequelizeModule.forRoot({
                 dialect: 'mysql',
-                uri: process.env.DATABASE_URL,
-                models: [],
+                host: 'localhost',
+                port: 3306,
+                username: 'nestuser',
+                password: 'Nest@123',
+                database: 'nest_auth',
                 autoLoadModels: true,
                 synchronize: true,
             }),

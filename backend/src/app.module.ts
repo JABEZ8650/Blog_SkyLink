@@ -10,19 +10,21 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true, // makes it available everywhere
+      isGlobal: true,
     }),
     SequelizeModule.forRoot({
-        dialect: 'mysql', // Or your database dialect
-        uri: process.env.DATABASE_URL, // Replace with your actual URL
-        models: [], // Your Sequelize models
-        autoLoadModels: true,
-        synchronize: true, // Or false, based on your needs
+      dialect: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'nestuser',
+      password: 'Nest@123',
+      database: 'nest_auth',
+      autoLoadModels: true,
+      synchronize: true,
     }),
     UserModule,
     PostModule,
     AuthModule,
-    
   ],
   controllers: [AppController],
   providers: [AppService],
