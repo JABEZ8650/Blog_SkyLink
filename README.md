@@ -1,42 +1,27 @@
-# Blog_SkyLink Frontend
+# Blog_SkyLink Full Stack
 
-This is the frontend application of Blog_SkyLink, built using React and Vite. It consumes APIs from the NestJS backend and provides a user-friendly interface for blogging features.
+Blog_SkyLink is a full-stack blogging platform that allows users to register, authenticate, create and manage blog posts, and interact with content. It is built with a scalable architecture using NestJS for the backend and Vite + React for the frontend.
 
-## 🛠️ Setup Instructions
-
-1. **Navigate to the client directory:**
-
-```bash
-cd client
-```
-
-2. **Install dependencies:**
-
-```bash
-npm install
-```
-
-3. **Run the development server:**
-
-```bash
-npm run dev
-```
-
-The application will run at:
+## 🗂️ Project Structure
 
 ```
-http://localhost:5173
+Blog_SkyLink/
+│
+├── backend/       # NestJS backend API
+├── client/        # Vite + React frontend
+└── README.md      # Project documentation
 ```
 
-If it doesn't open, use the following:
+## 🔧 Technologies Used
 
-```bash
-npm run dev -- --host
-```
+- **Backend**: NestJS, TypeORM, MySQL, JWT
+- **Frontend**: React, Vite, Axios
+- **Environment**: Node.js, NPM
 
-## 🧰 Tech Stack
+## 📦 Getting Started
 
-- React
-- Vite
-- Axios
-- CSS Modules / Tailwind (optional)
+To run the project locally, set up both the backend and the frontend individually by following their respective README files inside `/backend` and `/client` folders.
+
+## 👨‍💻 Author
+
+**Yabets** — Full-stack developer and creator of Blog_SkyLink.
